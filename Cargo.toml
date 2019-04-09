@@ -1,0 +1,15 @@
+[package]
+name = "cc2640r2f-hal"
+version = "0.1.0"
+authors = ["luojia65 <me@luojia.cc>"]
+edition = "2018"
+
+[dependencies]
+
+[dependencies.embedded-hal]
+version = "*"
+features = ["unproven"]
+
+[dependencies.cc2640r2f]
+version = "*"
+path = "../svd/cc2640r2f"
