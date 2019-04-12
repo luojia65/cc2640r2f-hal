@@ -63,7 +63,7 @@ pub struct OpenDrain;
 pub struct OpenSource;
 
 pub struct DIO0<MODE> {
-    pub(crate) _mode: PhantomData<MODE>,
+    _mode: PhantomData<MODE>,
 }
 
 impl<MODE> InputPin for DIO0<Input<MODE>> {
