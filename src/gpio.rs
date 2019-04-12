@@ -187,6 +187,8 @@ impl<MODE> DIO0<Output<MODE>> {
     }
 }
 
+// todo: DIOx, downgrade
+
 /*
 #[cfg(any(
     feature = "RSM", 
