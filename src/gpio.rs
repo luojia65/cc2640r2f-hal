@@ -88,11 +88,11 @@ impl<MODE> OutputPin for DIO0<Output<MODE>> {
 
 impl<MODE> StatefulOutputPin for DIO0<Output<MODE>> {
     fn is_set_high(&self) -> bool {        
-        unsafe { (*pac::GPIO::ptr()).dout3_0.read().dio0().bit_is_set() } 
+        unsafe { (*pac::GPIO::ptr()).dout31_0.read().dio0().bit_is_set() } 
     }
 
     fn is_set_low(&self) -> bool {
-        unsafe { (*pac::GPIO::ptr()).dout3_0.read().dio0().bit_is_clear() } 
+        unsafe { (*pac::GPIO::ptr()).dout31_0.read().dio0().bit_is_clear() } 
     }
 }
 
