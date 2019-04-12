@@ -1,6 +1,6 @@
 [package]
 name = "cc2640r2f-hal"
-version = "0.1.0"
+version = "0.0.0"
 authors = ["luojia65 <me@luojia.cc>"]
 edition = "2018"
 
@@ -12,4 +12,18 @@ features = ["unproven"]
 
 [dependencies.cc2640r2f]
 version = "*"
-path = "../svd/cc2640r2f"
+git = "https://github.com/luojia65/cc2640r2f"
+
+[dev-dependencies]
+cortex-m = "*"
+cortex-m-rt = "*"
+panic-halt = "*"
+
+[profile.dev]
+incremental = false
+codegen-units = 1
+
+[profile.release]
+codegen-units = 1
+debug = true
+lto = true
