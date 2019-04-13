@@ -4,6 +4,11 @@ version = "0.0.0"
 authors = ["luojia65 <me@luojia.cc>"]
 edition = "2018"
 
+readme = "README.md"
+repository = "https://github.com/luojia65/cc2640r2f-hal"
+keywords = ["arm", "cortex-m", "ti", "simplelink"]
+categories = ["embedded"]
+
 [dependencies]
 
 [dependencies.embedded-hal]
