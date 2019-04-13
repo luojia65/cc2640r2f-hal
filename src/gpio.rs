@@ -4,6 +4,7 @@ use embedded_hal::digital::{
 };
 use crate::{
     pac,
+    ioc::IOCFG0,
 };
 
 pub trait GpioExt {
@@ -12,22 +13,19 @@ pub trait GpioExt {
     fn split(self) -> Self::Parts;
 }
 
-impl GpioExt for (pac::GPIO, pac::IOC) {
+impl GpioExt for pac::GPIO {
     type Parts = Parts;
 
     fn split(self) -> Self::Parts {
         unsafe { (*pac::GPIO::ptr()).doe31_0.modify(|_r, w| w.bits(0xffff_ffff)) };
         Parts {
             dio0: DIO0 { _mode: PhantomData },
-            iocfg0: IOCFG0 { _mark_owned: () }, 
         }
     }
 }
 
 pub struct Parts {
     pub dio0: DIO0<Input<Floating>>,
-
-    pub iocfg0: IOCFG0,
 }
 
 pub enum Current {
@@ -99,16 +97,6 @@ impl<MODE> StatefulOutputPin for DIO0<Output<MODE>> {
 impl<MODE> ToggleableOutputPin for DIO0<Output<MODE>> {
     fn toggle(&mut self) {
         unsafe { (*pac::GPIO::ptr()).douttgl31_0.write(|w| w.bits(1 << 0)) }
-    }
-}
-
-pub struct IOCFG0 {
-    _mark_owned: ()
-}
-
-impl IOCFG0 {
-    pub(crate) fn iocfg0(&mut self) -> &pac::ioc::IOCFG0 {
-        unsafe { &(*pac::IOC::ptr()).iocfg0 }
     }
 }
 

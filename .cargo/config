@@ -7,4 +7,5 @@ rustflags = [
 ]
 
 [build]
+# A Cortex-M3 target
 target = "thumbv7m-none-eabi"

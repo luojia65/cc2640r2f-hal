@@ -17,8 +17,9 @@ use cc2640r2f_hal::{
 #[entry]
 fn main() -> ! {
     let dp = pac::Peripherals::take().unwrap();
-    let mut gpio = (dp.GPIO, dp.IOC).split();
-    let mut dio0 = gpio.dio0.into_push_pull_output(&mut gpio.iocfg0);
+    let gpio = dp.GPIO.split();
+    let mut ioc = dp.IOC.split();
+    let mut dio0 = gpio.dio0.into_push_pull_output(&mut ioc.iocfg0);
     loop {
         dio0.set_high();
         dio0.set_low();
