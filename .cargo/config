@@ -1,0 +1,10 @@
+# This is cargo config file for all *examples* in `cc2640r2f-hal`
+
+[target.thumbv7m-none-eabi]
+runner = 'arm-none-eabi-gdb'
+rustflags = [
+  "-C", "link-arg=-Tlink.x",
+]
+
+[build]
+target = "thumbv7m-none-eabi"
