@@ -19,9 +19,9 @@ fn main() -> ! {
     let dp = pac::Peripherals::take().unwrap();
     let gpio = dp.GPIO.split();
     let mut ioc = dp.IOC.split();
-    let mut dio0 = gpio.dio0.into_push_pull_output(&mut ioc.iocfg0);
+    let mut led = gpio.dio6.into_push_pull_output(&mut ioc.iocfg6);
     loop {
-        dio0.set_high();
-        dio0.set_low();
+        led.set_high();
+        led.set_low();
     }
 }

@@ -22,6 +22,7 @@ git = "https://github.com/luojia65/cc2640r2f"
 [dev-dependencies]
 cortex-m = "*"
 cortex-m-rt = "*"
+cortex-m-semihosting = "*"
 panic-halt = "*"
 
 [profile.dev]

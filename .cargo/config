@@ -1,7 +1,8 @@
 # This is cargo config file for all *examples* in `cc2640r2f-hal`
 
-[target.thumbv7m-none-eabi]
-runner = 'arm-none-eabi-gdb'
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "arm-none-eabi-gdb -q -x openocd.gdb"
+
 rustflags = [
   "-C", "link-arg=-Tlink.x",
 ]
